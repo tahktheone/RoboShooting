@@ -1,0 +1,55 @@
+import bpy
+
+# Get the active object
+obj = bpy.context.active_object
+
+#def find_object_by_name(name):
+#    for obj in bpy.data.objects:
+#        if obj.name == name:
+#            return obj
+#    return None
+
+# Find the object named "Cube"
+#curve = find_object_by_name("BezierCircle")
+
+# Clone the object 10 times
+for i in range(1, 46):
+    new_obj = obj.copy()
+    new_obj.data = obj.data.copy()
+    bpy.context.scene.collection.objects.link(new_obj)
+    #new_obj.location.x += i * 2
+    
+    # Add a Follow Path constraint to the new object
+    #follow_path_constraint = new_obj.constraints.new('FOLLOW_PATH')
+    
+    # Check if the object has a "Follow Path" constraint
+    if "Follow Path" in new_obj.constraints:
+        # Get the "Follow Path" constraint
+        follow_path_constraint = new_obj.constraints["Follow Path"]
+        follow_path_constraint.offset = i * 2.175
+        
+        # Check if the offset property of the constraint has keyframes set
+        if True:#follow_path_constraint.offset_fn_auto:
+            # Get the animation data of the object
+            anim_data = obj.animation_data
+            if anim_data:
+                # Get the animation data for the offset property
+                offset_fcurve = anim_data.action.fcurves.find('constraints["Follow Path"].offset')
+                if offset_fcurve:
+                    # Loop through the keyframes of the offset property
+                    for keyframe in offset_fcurve.keyframe_points:
+                        # Modify the value of the keyframe
+                        keyframe.co[1] += i * 2.175
+                        print(str(keyframe))
+                    # Update the keyframe values
+                    offset_fcurve.update()
+                else:
+                    print("The offset property of the 'Follow Path' constraint does not have keyframes set.")
+            else:
+                print("The object does not have animation data.")
+        else:
+            print("The offset property of the 'Follow Path' constraint does not have keyframes set.")
+    else:
+        print("The object does not have a 'Follow Path' constraint.")
+    
+    

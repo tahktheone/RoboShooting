@@ -1,0 +1,42 @@
+import bpy
+
+def add_anim(ob):
+    # Get reference to Follow Path constraint
+    fpc = [c for c in ob.constraints if c.name == "Follow Path"]
+    fpc[0].offset = 0.0
+    bpy.ops.ed.undo_push(message = "Restore point 1")
+    bpy.ops.constraint.apply(constraint=fpc[0].name)
+    initial_loc = ob.location.copy()
+    initial_rot = ob.rotation_euler.copy()
+    bpy.ops.ed.undo()
+        
+    ob = bpy.context.active_object
+    fpc = [c for c in ob.constraints if c.name == "Follow Path"]
+    fpc[0].offset = 2.175
+    bpy.ops.constraint.apply(constraint=fpc[0].name)
+    new_loc = ob.location.copy()
+    new_rot = ob.rotation_euler.copy()
+        
+    ob.keyframe_insert(data_path="location", frame=100)
+    ob.keyframe_insert(data_path="rotation_euler", frame=100)
+
+    ob.location = initial_loc
+    ob.rotation_euler = initial_rot
+    ob.keyframe_insert(data_path="location", frame=0)
+    ob.keyframe_insert(data_path="rotation_euler", frame=0)
+    
+    # Get the animation data of the object
+    animation_data = ob.animation_data
+
+    # Loop through all fcurves of the animation data
+    for fcurve in animation_data.action.fcurves:
+        # Loop through all keyframes of the fcurve
+        for keyframe in fcurve.keyframe_points:
+            # Change the handle type to 'VECTOR'
+            keyframe.handle_left_type = 'VECTOR'
+            keyframe.handle_right_type = 'VECTOR'
+
+add_anim(bpy.context.active_object)
+
+
+    

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.7002, g: 2264.9023, b: 3288.2969, a: 1}
+  m_IndirectSpecularColor: {r: 2159.5615, g: 2263.3516, b: 3286.375, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 1958860931}
   - component: {fileID: 1958860930}
   - component: {fileID: 1958860929}
+  - component: {fileID: 1958860934}
   - component: {fileID: 1958860928}
   - component: {fileID: 1958860933}
   m_Layer: 0
@@ -814,7 +815,7 @@ Rigidbody:
   m_GameObject: {fileID: 1958860927}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 2
+  m_Drag: 4
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -868,6 +869,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1823688466}
+--- !u!114 &1958860934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958860927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389ccc758a90bd34199af09682da040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 8136350615891926298, guid: cc3714dd982af6743868ed2d391ec8a4, type: 3}
+  - {fileID: 1952581519830809650, guid: a5785e794ef936842b249b98e34a4b9e, type: 3}
+  spawnDistance: 5
+  inputActions: {fileID: -944628639613478452, guid: 8bc447ed79820a14cbb04c61cf563214,
+    type: 3}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
