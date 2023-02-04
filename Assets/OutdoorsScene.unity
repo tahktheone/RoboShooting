@@ -884,6 +884,9 @@ MonoBehaviour:
   prefabs:
   - {fileID: 8136350615891926298, guid: cc3714dd982af6743868ed2d391ec8a4, type: 3}
   - {fileID: 1952581519830809650, guid: a5785e794ef936842b249b98e34a4b9e, type: 3}
+  - {fileID: 1106683871774538412, guid: c32389990c709a14e95d3cc692f2152c, type: 3}
+  - {fileID: 8163197017141571389, guid: 7c77289cc3b9392498efaa60107f2318, type: 3}
+  - {fileID: 6763634083390479330, guid: ed948ccd3da40804dbd7aa29a5cb19ae, type: 3}
   spawnDistance: 5
   inputActions: {fileID: -944628639613478452, guid: 8bc447ed79820a14cbb04c61cf563214,
     type: 3}

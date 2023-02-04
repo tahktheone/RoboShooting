@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 3f6dc702f61070d4abb8a709b29c4d5d
+guid: afe1d72535a9d3446af022fa1aa73ca3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m0
-    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m2
-    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m3
-    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m4
-    second: {fileID: 2100000, guid: f9c397dfa09d85d4e93941de189dc9e4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: screen
-    second: {fileID: 2100000, guid: f1c229ba3110c384895f400c0450dbb2, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -82,7 +57,7 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
-    meshOptimizationFlags: -1
+    meshOptimizationFlags: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
