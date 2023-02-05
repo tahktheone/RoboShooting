@@ -96,7 +96,7 @@ namespace RSGeneral
             allMyJoints.Add(joint);
         }
 
-        void OnDrawGizmos()
+        public virtual void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + transform.right * size);
@@ -106,6 +106,26 @@ namespace RSGeneral
 
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position + transform.forward * size);
+        }
+
+        public List<RSUnit> GetConnectedRSUnits()
+        {
+            List<RSUnit> connectedUnits = new List<RSUnit>();
+            GetConnectedRSUnits(connectedUnits);
+            return connectedUnits;
+        }
+
+        private void GetConnectedRSUnits(List<RSUnit> connectedUnits)
+        {
+            foreach (FixedJoint joint in allMyJoints)
+            {
+                RSUnit connectedUnit = joint.GetComponent<RSUnit>();
+                if (connectedUnit != null && !connectedUnits.Contains(connectedUnit))
+                {
+                    connectedUnits.Add(connectedUnit);
+                    connectedUnit.GetConnectedRSUnits(connectedUnits);
+                }
+            }
         }
     }
 }

@@ -227,20 +227,21 @@ namespace RSGeneral
             // 1 - continue (minus one block radar)
             // 2 - create caterpillar
             // 2 - at left
-            // 5 - looking down
-            // 0 - upvector forward
+            // 4 - looking down   - up
+            // 1 - upvector forward   - back
             // 2 - continue (minus 2 blocks (cater and radar))
             // 2 - create caterpillar
             // 3 - at right
-            // 5 - looking down
-            // 1 - upvector back
+            // 4 - looking down   - up
+            // 0 - upvector back - forward
             // 3 - continue (minus 3 blocks (cater cater and radar))
             // 3 - create weapon
             // 4 - at down
             // 0 - looking forward
             // 4 - upvector up
             // 10 - stop (exit cuz objects less than 10)
-            RSgenCode lCode = new RSgenCode("0,0,0,4,0,1,1,4,1,0,4,0,0,4,1,2,2,5,0,2,2,3,5,1,3,3,4,0,4,10");
+            //                               cmp       cnt       rdr       cp1       cp1       wpn
+            RSgenCode lCode = new RSgenCode("0,0,0,4,0,1,1,4,1,0,4,0,0,4,1,2,2,4,1,2,2,3,4,0,3,3,4,0,4,10");
             SpawnFromCode(GetComponentInChildren<Camera>().transform.position + GetComponentInChildren<Camera>().transform.forward * spawnDistance,
                           GetComponentInChildren<Camera>().transform, 
                           lCode);            
