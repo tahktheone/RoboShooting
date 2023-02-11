@@ -10,6 +10,7 @@ namespace RSGeneral
         public List<GameObject> prefabs;
         public float spawnDistance = 5f;
         private InputAction iaSpawnObject;
+        private InputAction iaFire;
 
         public InputActionAsset inputActions;
 
@@ -17,6 +18,9 @@ namespace RSGeneral
         {
             iaSpawnObject = inputActions.FindAction("Spawn");
             iaSpawnObject.performed += ctx => SpawnObject();
+
+            iaFire = inputActions.FindAction("Fire");
+            iaFire.performed += ctx => Fire();
         }
 
         // Start is called before the first frame update
@@ -29,6 +33,16 @@ namespace RSGeneral
         void Update()
         {
 
+        }
+
+        private void Fire()
+        {
+            GameObject rocket = InstantiatePrefab("rocket",
+                             GetComponentInChildren<Camera>().transform.position + 
+                                 GetComponentInChildren<Camera>().transform.forward * 0.5F +
+                                 GetComponentInChildren<Camera>().transform.right * 1.5F,
+                             GetComponentInChildren<Camera>().transform.rotation );
+            rocket.GetComponent<Rigidbody>().AddForceAtPosition(GetComponentInChildren<Camera>().transform.forward * 8000.0F, rocket.transform.position);
         }
 
         private void OnEnable()

@@ -24,6 +24,7 @@ namespace RSGeneral
             if (needToReset)
             {
                 connectedUnits = GetConnectedRSUnits();
+                connectedUnits.Add(this);
                 needToReset = false;
             }
 
@@ -36,6 +37,9 @@ namespace RSGeneral
 
                 Vector3 playerDirection = radar.FindPlayer();
 
+                RSWeapon weaponUnit = connectedUnits.Find(unit => unit.TypeName == "weapon") as RSWeapon;
+                weaponUnit.SetDirection(playerDirection);
+
                 List<RSUnit> caterpillarUnits = connectedUnits.FindAll(unit => unit.TypeName == "caterpillar");
 
                 Vector3 center = Vector3.zero;
@@ -45,6 +49,9 @@ namespace RSGeneral
                 }
                 center /= caterpillarUnits.Count;
 
+                bool lForwardBlock = radar.CheckUnitsForward(connectedUnits);
+                bool lBackwardBlock = radar.CheckUnitsBackward(connectedUnits);
+
                 foreach (RSUnit caterpillarUnit in caterpillarUnits)
                 {
                     float d = Vector3.Dot(playerDirection, caterpillarUnit.transform.position - center); // farther or nearer to player
@@ -53,13 +60,25 @@ namespace RSGeneral
 
                     RSCaterpillar caterpillar = caterpillarUnit as RSCaterpillar;
 
+                    if ( lForwardBlock & lBackwardBlock)
+                    {
+                        caterpillar.EngineForce = 0;
+                        continue;
+                    }
+
+                    if (lForwardBlock)
+                    {
+                        caterpillar.EngineForce = -0.5F;
+                        continue;
+                    }
+
                     if (pd > 20.0F)
                     {
                         if (d > 0) // nearer
                         {
                             if (dd > 0)
                             { // to player
-                                caterpillar.EngineForce = 2.0F * (dd - 0.5F);
+                                caterpillar.EngineForce = dd * 4.0F - 3.0F;  //2.0F * (dd - 0.5F);
                             }
                             else
                             { // from player
@@ -85,6 +104,5 @@ namespace RSGeneral
                 } // foreach (RSUnit caterpillarUnit in caterpillarUnits)
             } //if (radarUnit != null)
         } // public void Update()
-    }
-    
+    }    
 }
