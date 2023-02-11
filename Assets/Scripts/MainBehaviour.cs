@@ -39,10 +39,16 @@ namespace RSGeneral
         {
             GameObject rocket = InstantiatePrefab("rocket",
                              GetComponentInChildren<Camera>().transform.position + 
-                                 GetComponentInChildren<Camera>().transform.forward * 0.5F +
-                                 GetComponentInChildren<Camera>().transform.right * 1.5F,
-                             GetComponentInChildren<Camera>().transform.rotation );
-            rocket.GetComponent<Rigidbody>().AddForceAtPosition(GetComponentInChildren<Camera>().transform.forward * 8000.0F, rocket.transform.position);
+                             GetComponentInChildren<Camera>().transform.forward * 0.5F +
+                             GetComponentInChildren<Camera>().transform.right * 1.5F -
+                             GetComponentInChildren<Camera>().transform.up * 0.3F,
+                             Quaternion.LookRotation(GetComponentInChildren<Camera>().transform.forward +
+                                                     GetComponentInChildren<Camera>().transform.up * 0.2F, 
+                                                            GetComponentInChildren<Camera>().transform.up) );
+            rocket.GetComponent<Rigidbody>().AddForceAtPosition(
+                ( GetComponentInChildren<Camera>().transform.forward +
+                  GetComponentInChildren<Camera>().transform.up * 0.2F ) * 8000.0F, 
+                                                                rocket.transform.position);
         }
 
         private void OnEnable()
