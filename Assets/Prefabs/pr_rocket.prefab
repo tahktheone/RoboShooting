@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3313639638547735910}
   - component: {fileID: 1550993991963442855}
   - component: {fileID: 4413985583724254171}
+  - component: {fileID: 1825937848509091378}
   m_Layer: 0
   m_Name: psRocket
   m_TagString: Untagged
@@ -43,7 +44,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4812,6 +4813,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1825937848509091378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743337401829576392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6314c4b964f00ed4b8e72fd42102973f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8434094867462764128
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,8 +34,9 @@ namespace RSGeneral
 
         public RSCaterpillar() { TypeName = "caterpillar";}
 
-        private void Start()
+        public override void Start()
         {
+            base.Start();
             _collider = GetComponent<MeshCollider>();
             _collisionPoints = new List<Vector3>();
             _rb = GetComponent<Rigidbody>();

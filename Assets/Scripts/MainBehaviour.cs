@@ -11,6 +11,7 @@ namespace RSGeneral
         public float spawnDistance = 5f;
         private InputAction iaSpawnObject;
         private InputAction iaFire;
+        private InputAction iaShowHP;
 
         public InputActionAsset inputActions;
 
@@ -21,6 +22,20 @@ namespace RSGeneral
 
             iaFire = inputActions.FindAction("Fire");
             iaFire.performed += ctx => Fire();
+
+            iaShowHP = inputActions.FindAction("ToggleHPShow");
+            iaShowHP.started += ctx => ShowHPOn();
+            iaShowHP.canceled += ctx => ShowHPOff();
+        }
+
+        private void ShowHPOn()
+        {
+            RSGlobalData.Instance.setParameter("ShowHP", 1.0F);
+        }
+
+        private void ShowHPOff()
+        {
+            RSGlobalData.Instance.setParameter("ShowHP", 0);
         }
 
         // Start is called before the first frame update

@@ -14,8 +14,9 @@ namespace RSGeneral
             TypeName = "computer";
         }
 
-        public void Start()
+        public override void Start()
         {
+            base.Start();
             connectedUnits = new List<RSUnit>();
         }
 

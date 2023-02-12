@@ -14,8 +14,9 @@ namespace RSGeneral
             TypeName = "radar";
         }
 
-        public void Start()
+        public override void Start()
         {
+            base.Start();
             _up = new Vector3(0,2.0F,0);
             _ssize = new Vector3(4.0F,  // wide
                                         3.5F,  // forward 

@@ -18,8 +18,9 @@ namespace RSGeneral
             TypeName = "weapon";
         }
 
-        void Start()
+        public override void Start()
         {
+            base.Start();
             SetDirection(transform.position + transform.up * 3.0F);
         }
 

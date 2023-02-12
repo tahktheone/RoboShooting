@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4860376634857107070}
   - component: {fileID: 5347870262683645146}
+  - component: {fileID: 6441757378394237506}
   - component: {fileID: 3402638792893756851}
+  - component: {fileID: 2291545380054987455}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: psRocketEx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4767,6 +4769,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &6441757378394237506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297738300095840710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6314c4b964f00ed4b8e72fd42102973f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!199 &3402638792893756851
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4839,6 +4853,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2291545380054987455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297738300095840710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c05cf9c45b55c449da7d452fc925b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 1
+  explosionForce: 20
+  duration: 0.7
+  elapsedTime: 0
+  explosiondamage: 0.1
 --- !u!1 &1630247558142191322
 GameObject:
   m_ObjectHideFlags: 0

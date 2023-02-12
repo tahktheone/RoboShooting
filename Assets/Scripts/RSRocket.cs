@@ -24,7 +24,12 @@ public class RSRocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Instantiate(_explosion, transform.position, Quaternion.identity);
+        GameObject pex = Instantiate(_explosion, transform.position, Quaternion.identity);
+        GameObject ex = pex.transform.GetChild(0).gameObject;
+        ex.transform.parent = null;
+        Destroy(pex);
+        var mn = _ps.main;
+        mn.loop = false;
         var ems = _ps.emission;
         ems.enabled = false;
         _ps.transform.parent = null;
