@@ -3,7 +3,52 @@ guid: 20cab23281382a74b8856b58fb2b6ba3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blmTrack
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m1
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m1.001
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2.001
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2.002
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2.003
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2.004
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m2.005
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -32,12 +77,12 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -76,7 +121,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

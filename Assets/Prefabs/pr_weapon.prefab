@@ -392,6 +392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _typeName: weapon
+  prefabDestroyed: {fileID: 2079790710252836741, guid: 68ce9c803a054e74e8ce3725b2722e1c,
+    type: 3}
+  prefabExplosion: {fileID: 4399873265407540836, guid: d3498ec2b109fca4dbf23f3d40719c6b,
+    type: 3}
   stoika: {fileID: 3348401093965216441}
   dulo: {fileID: 645514977344694298}
   rotationSpeed: 2

@@ -45,7 +45,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.2
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4865,11 +4865,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c05cf9c45b55c449da7d452fc925b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 1
+  explosionRadius: 1.5
   explosionForce: 20
   duration: 0.7
+  animationDuration: 2
   elapsedTime: 0
-  explosiondamage: 0.1
+  explosiondamage: 0.3
 --- !u!1 &1630247558142191322
 GameObject:
   m_ObjectHideFlags: 0

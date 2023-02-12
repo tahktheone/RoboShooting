@@ -36,8 +36,9 @@ namespace RSGeneral
             duloTargetRotation = Quaternion.Euler(pitch * Mathf.Rad2Deg, yaw * Mathf.Rad2Deg, 0);
         }
 
-        void Update()
+        public override void Update()
         {
+            base.Update();
             // Interpolate the rotation of stoika towards the target rotation
             stoika.transform.localRotation = Quaternion.Lerp(stoika.transform.localRotation, stoikaTargetRotation, Time.deltaTime * rotationSpeed);
 

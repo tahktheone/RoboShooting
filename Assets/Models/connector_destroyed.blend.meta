@@ -3,7 +3,42 @@ guid: e1928273f6eec2e47845a157ab31b191
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.001
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.002
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.003
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.004
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.005
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blConnector.006
+    second: {fileID: 2100000, guid: 6ef9e3598e44d7f4c963632e4868dac0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -32,7 +67,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -76,7 +111,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

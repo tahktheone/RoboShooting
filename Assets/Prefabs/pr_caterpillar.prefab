@@ -199,6 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _typeName: caterpillar
+  prefabDestroyed: {fileID: 6522220972758715683, guid: 3c0cfdd1311068943b555bece3adbbb5,
+    type: 3}
+  prefabExplosion: {fileID: 4399873265407540836, guid: d3498ec2b109fca4dbf23f3d40719c6b,
+    type: 3}
   _pushForce: 13000
   animator: {fileID: 5782783720742332995}
 --- !u!4 &9218386386260532539 stripped

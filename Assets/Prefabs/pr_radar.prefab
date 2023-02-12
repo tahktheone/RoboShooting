@@ -169,3 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _typeName: radar
+  prefabDestroyed: {fileID: 7388875808328834872, guid: 0972e6574d9979b4aa7900df80b9292b,
+    type: 3}
+  prefabExplosion: {fileID: 4399873265407540836, guid: d3498ec2b109fca4dbf23f3d40719c6b,
+    type: 3}

@@ -39,12 +39,12 @@ namespace RSGeneral
                     if (unit != null)
                     {
                         unit.Hp -= explosiondamage;
-                        Rigidbody rb = collider.GetComponent<Rigidbody>();
-                        if (rb != null)
-                        {
-                            Vector3 explosionDirection = collider.transform.position - transform.position;
-                            rb.AddForce(explosionDirection.normalized * explosionForce, ForceMode.Impulse);
-                        }
+                    }
+                    Rigidbody rb = collider.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        Vector3 explosionDirection = collider.transform.position - transform.position;
+                        rb.AddForce(explosionDirection.normalized * explosionForce, ForceMode.Impulse);
                     }
                 }
             } // (elapsedTime < duration)

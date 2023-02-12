@@ -20,8 +20,9 @@ namespace RSGeneral
             connectedUnits = new List<RSUnit>();
         }
 
-        public void Update()
+        public override void Update()
         {
+            base.Update();
             if (needToReset)
             {
                 connectedUnits = GetConnectedRSUnits();
@@ -29,81 +30,92 @@ namespace RSGeneral
                 needToReset = false;
             }
 
-            RSUnit radarUnit = connectedUnits.Find(unit => unit.TypeName == "radar");
-            if (radarUnit != null)
+            try
             {
-                RSRadar radar = radarUnit as RSRadar;
-
-                float pd = radar.DistanceToPlayer();
-
-                Vector3 playerDirection = radar.FindPlayer();
-
-                RSWeapon weaponUnit = connectedUnits.Find(unit => unit.TypeName == "weapon") as RSWeapon;
-                weaponUnit.SetDirection(playerDirection);
-
-                List<RSUnit> caterpillarUnits = connectedUnits.FindAll(unit => unit.TypeName == "caterpillar");
-
-                Vector3 center = Vector3.zero;
-                foreach (RSUnit unit in caterpillarUnits)
+                RSUnit radarUnit = connectedUnits.Find(unit => unit.TypeName == "radar");
+                if (radarUnit != null)
                 {
-                    center += unit.transform.position;
-                }
-                center /= caterpillarUnits.Count;
+                    RSRadar radar = radarUnit as RSRadar;
 
-                bool lForwardBlock = radar.CheckUnitsForward(connectedUnits);
-                bool lBackwardBlock = radar.CheckUnitsBackward(connectedUnits);
+                    float pd = radar.DistanceToPlayer();
 
-                foreach (RSUnit caterpillarUnit in caterpillarUnits)
-                {
-                    float d = Vector3.Dot(playerDirection, caterpillarUnit.transform.position - center); // farther or nearer to player
-                    Vector3 caterpillarDirection = caterpillarUnit.transform.forward;
-                    float dd = Vector3.Dot(playerDirection, caterpillarDirection); // to player or from player
+                    Vector3 playerDirection = radar.FindPlayer();
 
-                    RSCaterpillar caterpillar = caterpillarUnit as RSCaterpillar;
-
-                    if ( lForwardBlock & lBackwardBlock)
+                    List<RSUnit> weaponUnits = connectedUnits.FindAll(unit => unit.TypeName == "weapon");
+                    foreach (RSUnit unit in weaponUnits)
                     {
-                        caterpillar.EngineForce = 0;
-                        continue;
+                        RSWeapon weapon = unit as RSWeapon;
+                        weapon.SetDirection(playerDirection);
                     }
 
-                    if (lForwardBlock)
-                    {
-                        caterpillar.EngineForce = -0.5F;
-                        continue;
-                    }
+                    List<RSUnit> caterpillarUnits = connectedUnits.FindAll(unit => unit.TypeName == "caterpillar");
 
-                    if (pd > 20.0F)
+                    Vector3 center = Vector3.zero;
+                    foreach (RSUnit unit in caterpillarUnits)
                     {
-                        if (d > 0) // nearer
+                        center += unit.transform.position;
+                    }
+                    center /= caterpillarUnits.Count;
+
+                    bool lForwardBlock = radar.CheckUnitsForward(connectedUnits);
+                    bool lBackwardBlock = radar.CheckUnitsBackward(connectedUnits);
+
+                    foreach (RSUnit caterpillarUnit in caterpillarUnits)
+                    {
+                        float d = Vector3.Dot(playerDirection, caterpillarUnit.transform.position - center); // farther or nearer to player
+                        Vector3 caterpillarDirection = caterpillarUnit.transform.forward;
+                        float dd = Vector3.Dot(playerDirection, caterpillarDirection); // to player or from player
+
+                        RSCaterpillar caterpillar = caterpillarUnit as RSCaterpillar;
+
+                        if (lForwardBlock & lBackwardBlock)
                         {
-                            if (dd > 0)
-                            { // to player
-                                caterpillar.EngineForce = dd * 4.0F - 3.0F;  //2.0F * (dd - 0.5F);
+                            caterpillar.EngineForce = 0;
+                            continue;
+                        }
+
+                        if (lForwardBlock)
+                        {
+                            caterpillar.EngineForce = -0.5F;
+                            continue;
+                        }
+
+                        if (pd > 20.0F)
+                        {
+                            if (d > 0) // nearer
+                            {
+                                if (dd > 0)
+                                { // to player
+                                    caterpillar.EngineForce = dd * 4.0F - 3.0F;  //2.0F * (dd - 0.5F);
+                                }
+                                else
+                                { // from player
+                                    caterpillar.EngineForce = -1.0F;
+                                }
                             }
                             else
-                            { // from player
-                                caterpillar.EngineForce = -1.0F;
-                            }
+                            { //farther
+                                if (dd > 0)
+                                { // to player
+                                    caterpillar.EngineForce = 1.0F;
+                                }
+                                else
+                                { // from player
+                                    caterpillar.EngineForce = 1.0F;
+                                }
+                            }// farther or nearer to player
                         }
                         else
-                        { //farther
-                            if (dd > 0)
-                            { // to player
-                                caterpillar.EngineForce = 1.0F;
-                            }
-                            else
-                            { // from player
-                                caterpillar.EngineForce = 1.0F;
-                            }
-                        }// farther or nearer to player
-                    }
-                    else
-                    { //if (pd < 20.0F)
-                        caterpillar.EngineForce = 0.0F;
-                    } //if (pd > 10.0F)
-                } // foreach (RSUnit caterpillarUnit in caterpillarUnits)
-            } //if (radarUnit != null)
+                        { //if (pd < 20.0F)
+                            caterpillar.EngineForce = 0.0F;
+                        } //if (pd > 10.0F)
+                    } // foreach (RSUnit caterpillarUnit in caterpillarUnits)
+                } //if (radarUnit != null)
+            } // try
+            catch
+            {
+                needToReset = true;
+            } // catch
         } // public void Update()
     }    
 }

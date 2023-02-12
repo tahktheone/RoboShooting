@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4400475708834706424}
   - component: {fileID: 7787375268281248034}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: psExpUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2830909012608153364}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.307, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,9 +43,9 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2830909012608153364}
   serializedVersion: 8
-  lengthInSec: 0.2
+  lengthInSec: 0.3
   simulationSpeed: 1
-  stopAction: 1
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -609,7 +609,7 @@ ParticleSystem:
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 0.02
       minScalar: 0.01
       maxCurve:
@@ -617,7 +617,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: -1
+          value: 0.14418793
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -625,8 +625,17 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.8805237
-          value: 0.99324036
+          time: 0.8714735
+          value: 0.06473337
+          inSlope: -0.82073665
+          outSlope: -0.82073665
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.9013672
+          value: -0.40210915
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -869,7 +878,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 800
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -979,7 +988,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 2.1913865
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2204,7 +2213,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 1
@@ -4844,11 +4853,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c05cf9c45b55c449da7d452fc925b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 2
-  explosionForce: 10
-  duration: 2
+  explosionRadius: 4
+  explosionForce: 1
+  duration: 0.7
+  animationDuration: 2
   elapsedTime: 0
-  explosiondamage: 1
+  explosiondamage: 0.2
 --- !u!114 &7787375268281248034
 MonoBehaviour:
   m_ObjectHideFlags: 0

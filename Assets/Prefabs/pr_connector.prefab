@@ -228,6 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _typeName: connector
+  prefabDestroyed: {fileID: 8157689759459166306, guid: 3aa1bbe9adca3584290e2ab44c79883e,
+    type: 3}
+  prefabExplosion: {fileID: 4399873265407540836, guid: d3498ec2b109fca4dbf23f3d40719c6b,
+    type: 3}
 --- !u!4 &1950525399665098928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06627b6d284c21f4cb0a7f4db0ce0a1a,

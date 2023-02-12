@@ -202,6 +202,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _typeName: computer
+  prefabDestroyed: {fileID: 2620718510155165448, guid: 85932854b6a2b8a4fb4d591335bf118f,
+    type: 3}
+  prefabExplosion: {fileID: 4399873265407540836, guid: d3498ec2b109fca4dbf23f3d40719c6b,
+    type: 3}
 --- !u!4 &6634509016919721936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 094f41710f5b5d140a5bf2d4324073cf,

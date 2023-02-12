@@ -76,6 +76,8 @@ namespace RSGeneral
         private List<FixedJoint> allMyJoints = new List<FixedJoint>();
         public float _hp;
         public string _typeName;
+        public GameObject prefabDestroyed;
+        public GameObject prefabExplosion;
         private Renderer _renderer;
 
         private float size = 2.0F;
@@ -97,12 +99,32 @@ namespace RSGeneral
             allMyJoints.Add(joint);
         }
 
+        public void DeleteJoint(FixedJoint joint)
+        {
+            allMyJoints.Remove(joint);
+        }
+
         public virtual void Start()
         {
             _renderer = GetComponent<Renderer>();
             if(_renderer == null)
             {
                 _renderer = transform.GetChild(0).GetComponent<Renderer>();
+            }
+        }
+
+        public virtual void Update()
+        {
+            if(_hp <= 0)
+            {
+                DestroyUnit(true);
+            }
+            else
+            {
+                if (allMyJoints.Count == 0)
+                {
+                    DestroyUnit(false);
+                }
             }
         }
 
@@ -116,6 +138,39 @@ namespace RSGeneral
 
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position + transform.forward * size);
+        }
+
+        public void DestroyUnit(bool withExplosion)
+        {
+            GameObject prefabInstance = Instantiate(prefabDestroyed, gameObject.transform.position, gameObject.transform.rotation);
+            Transform[] children = prefabInstance.GetComponentsInChildren<Transform>();
+            foreach (Transform child in children)
+            {
+                child.parent = null;
+            }            
+            foreach (FixedJoint joint in allMyJoints)
+            {
+                RSUnit connectedUnit;
+                connectedUnit  = joint.connectedBody.gameObject.GetComponent<RSUnit>();
+                if ((connectedUnit != null)&(connectedUnit!=this))
+                {
+                    connectedUnit.DeleteJoint(joint);
+                }
+                connectedUnit = joint.gameObject.GetComponent<RSUnit>();
+                if ((connectedUnit != null)&(connectedUnit != this))
+                {
+                    connectedUnit.DeleteJoint(joint);
+                }
+                Destroy(joint);
+            }
+            allMyJoints.Clear();
+            if (withExplosion)
+            {
+                GameObject ex = Instantiate(prefabExplosion, gameObject.transform.position, gameObject.transform.rotation);
+                ex.transform.GetChild(0).parent = null;                
+                Destroy(ex);
+            }
+            Destroy(gameObject);
         }
 
         private void OnGUI()

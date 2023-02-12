@@ -103,8 +103,9 @@ namespace RSGeneral
             } //foreach (var collisionPoint in _collisionPoints)
         } // private void FixedUpdate()
 
-        private void Update()
+        public override void Update()
         {
+            base.Update();
             _collisionPoints.Clear();
             Collider[] colliders = Physics.OverlapBox(transform.position, tmpCollider, transform.rotation);
 
