@@ -138,16 +138,43 @@ namespace RSGeneral
 
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position + transform.forward * size);
+
+            /*
+            //get parent position
+            if (transform.parent != null)
+            {
+                var parentPosition = transform.parent.position;
+
+                Gizmos.color = Color.cyan;
+                //draw line from current position to parent position
+                Gizmos.DrawLine(transform.position, parentPosition);
+                //draw big arrow from current position to parent position
+                Gizmos.DrawLine(transform.position, parentPosition);
+                Gizmos.DrawLine(parentPosition, parentPosition + Vector3.up * 0.5f);
+                Gizmos.DrawLine(parentPosition, parentPosition + Vector3.right * 0.5f);
+                Gizmos.DrawLine(parentPosition, parentPosition + Vector3.back * 0.5f);
+                Gizmos.DrawLine(parentPosition, parentPosition + Vector3.left * 0.5f);
+                Gizmos.DrawLine(parentPosition, parentPosition + Vector3.down * 0.5f);
+            } */
         }
 
         public void DestroyUnit(bool withExplosion)
         {
+            foreach (Transform child in transform)
+            {
+                // Detach children from parent
+                if (child.gameObject.GetComponent<RSUnit>() != null)
+                    child.parent = null;
+            }
+            transform.parent = null;
+
             GameObject prefabInstance = Instantiate(prefabDestroyed, gameObject.transform.position, gameObject.transform.rotation);
             Transform[] children = prefabInstance.GetComponentsInChildren<Transform>();
             foreach (Transform child in children)
             {
                 child.parent = null;
-            }            
+            }
+
             foreach (FixedJoint joint in allMyJoints)
             {
                 RSUnit connectedUnit;
@@ -164,6 +191,7 @@ namespace RSGeneral
                 Destroy(joint);
             }
             allMyJoints.Clear();
+
             if (withExplosion)
             {
                 GameObject ex = Instantiate(prefabExplosion, gameObject.transform.position, gameObject.transform.rotation);

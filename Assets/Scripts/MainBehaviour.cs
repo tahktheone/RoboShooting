@@ -217,6 +217,7 @@ namespace RSGeneral
                     rsUnit1.AddJoint(fixedJoint);
                     RSUnit rsUnit2 = go_cmp.GetComponent<RSUnit>();
                     rsUnit2.AddJoint(fixedJoint);
+                    //go_cmp.transform.parent = ct;
                 }
                 else
                 {   // Первый объект
@@ -276,7 +277,9 @@ namespace RSGeneral
             // 4 - upvector up
             // 10 - stop (exit cuz objects less than 10)
             //                               cmp       cnt       rdr       cp1       cp1       wpn
-            RSgenCode lCode = new RSgenCode("0,0,0,4,0,1,1,4,1,0,4,0,0,4,1,2,2,4,1,2,2,3,4,0,3,3,4,0,4,10");
+            // RSgenCode lCode = new RSgenCode("0,0,0,4,0,1,1,4,1,0,4,0,0,4,1,2,2,4,1,2,2,3,4,0,3,3,4,0,4,10");
+            //                               cmp        cp1        cp2               
+            RSgenCode lCode = new RSgenCode("0,0,0,4,0,2,2,0,4,1,2,3,0,5,2,4,4,4,1,3,1,0,0,4,0,1,0,0,4,0,1,0,0,4,0,2,2,0,4,1,2,3,0,5,2,3,4,0,4,10");
             SpawnFromCode(GetComponentInChildren<Camera>().transform.position + GetComponentInChildren<Camera>().transform.forward * spawnDistance,
                           GetComponentInChildren<Camera>().transform, 
                           lCode);            

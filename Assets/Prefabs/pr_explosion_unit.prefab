@@ -4854,11 +4854,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 4
-  explosionForce: 1
-  duration: 0.7
+  explosionForce: 0.2
+  duration: 0.6
   animationDuration: 2
   elapsedTime: 0
-  explosiondamage: 0.2
+  explosiondamage: 0.1
 --- !u!114 &7787375268281248034
 MonoBehaviour:
   m_ObjectHideFlags: 0
